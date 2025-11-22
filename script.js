@@ -12,8 +12,8 @@ const messageDiv = document.querySelector(".message");
 const cells = document.querySelectorAll(".cell");
 
 submitBtn.addEventListener("click", () => {
-  player1 = document.getElementById("player-1").value.trim();
-  player2 = document.getElementById("player-2").value.trim();
+  player1 = document.getElementById("player1").value.trim();
+  player2 = document.getElementById("player2").value.trim();
 
   if (player1 === "" || player2 === "") {
     alert("Enter both player names!");
@@ -35,7 +35,7 @@ cells.forEach(cell => {
     cell.textContent = currentSymbol;
 
     if (checkWin()) {
-      messageDiv.textContent = `${currentPlayer}, congratulations you won!`;
+      messageDiv.textContent = `${currentPlayer} congratulations you won!`;
       highlightWin();
       disableBoard();
       return;
@@ -67,6 +67,7 @@ let winningSet = [];
 function checkWin() {
   for (let pattern of winningPatterns) {
     const [a,b,c] = pattern;
+
     if (
       getCell(a) === currentSymbol &&
       getCell(b) === currentSymbol &&
